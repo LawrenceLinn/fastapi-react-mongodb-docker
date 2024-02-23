@@ -10,6 +10,7 @@ from .config.config import settings
 from .models.users import User
 from .routers.api import api_router
 
+
 @asynccontextmanager
 async def lifespan(app: FastAPI):
     # Setup mongoDB
@@ -55,9 +56,10 @@ if settings.BACKEND_CORS_ORIGINS:
         allow_headers=["*"],
     )
 
+
 @app.websocket("/ws/video")
 async def websocket_video(websocket: WebSocket):
-    #print in the console
+    # print in the console
     print("websocket_video")
     await websocket.accept()
     while True:
@@ -69,9 +71,11 @@ async def websocket_video(websocket: WebSocket):
         # 将处理后的视频数据发送回客户端
         await websocket.send_bytes(processed_data)
 
+
 def process_video_data(data):
     # 处理视频数据的伪代码
     return data  # 返回处理后的数据
+
 
 app.include_router(api_router, prefix=settings.API_V1_STR)
 # app.include_router(video.router, prefix="/video")
