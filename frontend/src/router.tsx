@@ -2,6 +2,7 @@ import { createBrowserRouter } from 'react-router-dom'
 import ErrorPage from './error-page'
 import Home, { loader as homeLoader } from './routes/home'
 import Login from './routes/login'
+import Video from './routes/video'
 import { Profile } from './routes/profile'
 import Register from './routes/register'
 import Root from './routes/root'
@@ -27,6 +28,10 @@ export const routes = [
       {
         path: 'login',
         element: <Login />,
+      },
+      {
+        path: 'video',
+        element: <Video />,
       },
       {
         path: 'register',

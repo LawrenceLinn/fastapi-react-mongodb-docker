@@ -48,6 +48,7 @@ services:
 
   backend:
     image: '${DOCKER_IMAGE_BACKEND?Variable not set}:${TAG-latest}'
+    platform: linux/amd64
     depends_on:
       - db
     env_file:
@@ -95,4 +96,4 @@ volumes:
 networks:
   traefik-public:
     # For local dev, don't expect an external Traefik network
-    external: false
+    external: False

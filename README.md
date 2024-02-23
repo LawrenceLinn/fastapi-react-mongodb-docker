@@ -128,3 +128,204 @@ The project has a [build workflow](./.github/workflows/build.yml) configuration 
 You also need to add an environment secret variable `SERVER_ENV_PROD` which should contain the root `.env` file with the variables set for your production environment (simply copy-paste the contents of the env file as the github secret). This secret environment variable will be used by the github workflow to build the docker images with the [docker-compose.prod.yml](./docker-compose.prod.yml) file.
 
 Finally, enable write permission for the `GITHUB_TOKEN` to enable pushing images to your package registry: Go to `Settings` > `Actions` > `General` and check `Read and write permissions` under `Workflow permissions`.
+
+```
+fastapi-react-mongodb-docker
+├─ .env
+├─ .git
+│  ├─ FETCH_HEAD
+│  ├─ HEAD
+│  ├─ config
+│  ├─ description
+│  ├─ hooks
+│  │  ├─ applypatch-msg.sample
+│  │  ├─ commit-msg.sample
+│  │  ├─ fsmonitor-watchman.sample
+│  │  ├─ post-update.sample
+│  │  ├─ pre-applypatch.sample
+│  │  ├─ pre-commit.sample
+│  │  ├─ pre-merge-commit.sample
+│  │  ├─ pre-push.sample
+│  │  ├─ pre-rebase.sample
+│  │  ├─ pre-receive.sample
+│  │  ├─ prepare-commit-msg.sample
+│  │  ├─ push-to-checkout.sample
+│  │  └─ update.sample
+│  ├─ index
+│  ├─ info
+│  │  └─ exclude
+│  ├─ logs
+│  │  ├─ HEAD
+│  │  └─ refs
+│  │     ├─ heads
+│  │     │  └─ main
+│  │     └─ remotes
+│  │        └─ origin
+│  │           └─ HEAD
+│  ├─ objects
+│  │  ├─ info
+│  │  └─ pack
+│  │     ├─ pack-77f3de55a236aab5359c760a9c72a0781a78e66a.idx
+│  │     └─ pack-77f3de55a236aab5359c760a9c72a0781a78e66a.pack
+│  ├─ packed-refs
+│  └─ refs
+│     ├─ heads
+│     │  └─ main
+│     ├─ remotes
+│     │  └─ origin
+│     │     └─ HEAD
+│     └─ tags
+├─ .github
+│  ├─ ISSUE_TEMPLATE
+│  │  ├─ bug_report.md
+│  │  └─ feature_request.md
+│  └─ workflows
+│     ├─ build.yml
+│     └─ test.yml
+├─ .gitignore
+├─ .pre-commit-config.yaml
+├─ LICENSE
+├─ README.md
+├─ backend
+│  ├─ .env.dev
+│  ├─ .gitignore
+│  ├─ Dockerfile
+│  ├─ README.md
+│  ├─ app
+│  │  ├─ __init__.py
+│  │  ├─ __pycache__
+│  │  │  ├─ __init__.cpython-311.pyc
+│  │  │  ├─ __init__.cpython-312.pyc
+│  │  │  ├─ main.cpython-311.pyc
+│  │  │  └─ main.cpython-312.pyc
+│  │  ├─ auth
+│  │  │  ├─ __init__.py
+│  │  │  ├─ __pycache__
+│  │  │  │  ├─ __init__.cpython-311.pyc
+│  │  │  │  ├─ __init__.cpython-312.pyc
+│  │  │  │  ├─ auth.cpython-311.pyc
+│  │  │  │  └─ auth.cpython-312.pyc
+│  │  │  └─ auth.py
+│  │  ├─ config
+│  │  │  ├─ __init__.py
+│  │  │  ├─ __pycache__
+│  │  │  │  ├─ __init__.cpython-311.pyc
+│  │  │  │  ├─ __init__.cpython-312.pyc
+│  │  │  │  ├─ config.cpython-311.pyc
+│  │  │  │  └─ config.cpython-312.pyc
+│  │  │  ├─ config.py
+│  │  │  └─ logging.py
+│  │  ├─ main.py
+│  │  ├─ models
+│  │  │  ├─ __init__.py
+│  │  │  ├─ __pycache__
+│  │  │  │  ├─ __init__.cpython-311.pyc
+│  │  │  │  ├─ __init__.cpython-312.pyc
+│  │  │  │  ├─ users.cpython-311.pyc
+│  │  │  │  └─ users.cpython-312.pyc
+│  │  │  └─ users.py
+│  │  ├─ routers
+│  │  │  ├─ __init__.py
+│  │  │  ├─ __pycache__
+│  │  │  │  ├─ __init__.cpython-311.pyc
+│  │  │  │  ├─ __init__.cpython-312.pyc
+│  │  │  │  ├─ api.cpython-311.pyc
+│  │  │  │  ├─ api.cpython-312.pyc
+│  │  │  │  ├─ login.cpython-311.pyc
+│  │  │  │  ├─ login.cpython-312.pyc
+│  │  │  │  ├─ users.cpython-311.pyc
+│  │  │  │  └─ users.cpython-312.pyc
+│  │  │  ├─ api.py
+│  │  │  ├─ login.py
+│  │  │  └─ users.py
+│  │  └─ schemas
+│  │     ├─ __init__.py
+│  │     ├─ __pycache__
+│  │     │  ├─ __init__.cpython-311.pyc
+│  │     │  ├─ __init__.cpython-312.pyc
+│  │     │  ├─ tokens.cpython-311.pyc
+│  │     │  ├─ tokens.cpython-312.pyc
+│  │     │  ├─ users.cpython-311.pyc
+│  │     │  └─ users.cpython-312.pyc
+│  │     ├─ tokens.py
+│  │     └─ users.py
+│  ├─ poetry.lock
+│  ├─ pyproject.toml
+│  └─ tests
+│     ├─ __init__.py
+│     ├─ conftest.py
+│     ├─ routers
+│     │  ├─ __init__.py
+│     │  ├─ test_login.py
+│     │  └─ test_users.py
+│     └─ utils.py
+├─ docker-compose.prod.yml
+├─ docker-compose.yml
+└─ frontend
+   ├─ .dockerignore
+   ├─ .env.development
+   ├─ .env.production
+   ├─ .env.test
+   ├─ .eslintrc.json
+   ├─ .gitignore
+   ├─ .prettierrc.json
+   ├─ Dockerfile
+   ├─ Dockerfile.development
+   ├─ README.md
+   ├─ index.html
+   ├─ nginx.conf
+   ├─ node_modules
+   ├─ package-lock.json
+   ├─ package.json
+   ├─ public
+   │  ├─ beanie.svg
+   │  ├─ docker.png
+   │  ├─ farmd-1.png
+   │  ├─ farmd-2.png
+   │  ├─ fastapi-mark.svg
+   │  ├─ fastapi.png
+   │  ├─ hook-forms.svg
+   │  ├─ mongodb.png
+   │  ├─ mui.svg
+   │  ├─ react-router-mark.svg
+   │  ├─ react.svg
+   │  └─ vite.svg
+   ├─ src
+   │  ├─ axios.ts
+   │  ├─ components
+   │  │  ├─ LoginForm.test.tsx
+   │  │  ├─ LoginForm.tsx
+   │  │  ├─ RegisterForm.test.tsx
+   │  │  ├─ RegisterForm.tsx
+   │  │  ├─ TopMenuBar.test.tsx
+   │  │  ├─ TopMenuBar.tsx
+   │  │  ├─ UserProfile.test.tsx
+   │  │  └─ UserProfile.tsx
+   │  ├─ contexts
+   │  │  ├─ auth.tsx
+   │  │  └─ snackbar.tsx
+   │  ├─ error-page.tsx
+   │  ├─ main.tsx
+   │  ├─ models
+   │  │  └─ user.ts
+   │  ├─ router.tsx
+   │  ├─ routes
+   │  │  ├─ home.tsx
+   │  │  ├─ login.tsx
+   │  │  ├─ profile.tsx
+   │  │  ├─ register.tsx
+   │  │  ├─ root.tsx
+   │  │  ├─ sso.login.tsx
+   │  │  ├─ users.test.tsx
+   │  │  └─ users.tsx
+   │  ├─ services
+   │  │  ├─ auth.service.ts
+   │  │  └─ user.service.ts
+   │  ├─ setupTest.ts
+   │  ├─ theme.tsx
+   │  └─ vite-env.d.ts
+   ├─ tsconfig.json
+   ├─ tsconfig.node.json
+   └─ vite.config.ts
+
+```

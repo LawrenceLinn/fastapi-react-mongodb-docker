@@ -2,7 +2,11 @@ FROM node:20-slim
 WORKDIR /app
 
 COPY package*.json /app/
+#添加配置 https 的参数：HTTPS=true SSL_CRT_FILE=$HOME/.cert/cert.pem SSL_KEY_FILE=$HOME/.cert/key.pem npm start
 
+ENV HTTPS=true
+ENV SSL_CRT_FILE=~/.cert/cert.pem
+ENV SSL_KEY_FILE=~/.cert/key.pem
 RUN npm ci
 
 COPY ./ /app/
